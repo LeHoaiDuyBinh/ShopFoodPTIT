@@ -13,6 +13,12 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".ConfirmOrder"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="false" />
+        <activity
             android:name=".NewPasswordActivity"
             android:exported="false">
             <meta-data
@@ -69,7 +75,8 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="stateVisible">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

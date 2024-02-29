@@ -4,45 +4,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     tools:context=".MainActivity">
 
 
     <TextView
         android:id="@+id/tv_webcome_user"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:fontFamily="@font/arbutus_slab"
-        android:text="@string/header_text"
-        android:textColor="#DF1131"
-        android:textSize="20sp"
-        android:textStyle="bold|italic"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center_vertical"
+        android:text="PTIT FOOD"
+        android:textColor="#CD2E2F"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/searchView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.53"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></TextView>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_webcome_user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_webcome_user"
+        app:layout_constraintVertical_bias="0.541"
+        app:srcCompat="@drawable/baseline_notifications_active_24" />
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/custom_view_search_bar"
+        android:iconifiedByDefault="false"
+        android:queryBackground="@android:color/transparent"
+        android:queryHint="@string/search_hint"
+        app:layout_constraintBottom_toTopOf="@+id/fcv_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_webcome_user" />
 
     <fragment
         android:id="@+id/fcv_view"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="560dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@+id/bnv_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_webcome_user"
+        app:layout_constraintTop_toBottomOf="@+id/searchView"
         app:navGraph="@navigation/navigation" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnv_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/menu"
+        android:background="#DF1131"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="#DF1131"/>
+        app:menu="@menu/menu" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

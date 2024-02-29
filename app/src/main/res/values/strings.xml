@@ -42,11 +42,39 @@
     <string name="enter_password">Nhập mật khẩu mới</string>
     <string name="enter_confirm_password">Xác thực lại mật khẩu</string>
 
-
     <!--    Header and footer-->
     <string name="header_text">PTIT FOOD kính chào quý khách !</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--    Home-->
+    <string name="home_popular">Phổ biến</string>
+    <string name="home_view_menu">Xem thêm</string>
+
+    <!--    Search-->
+    <string name="search_hint">Món ăn yêu thích ?</string>
+
+    <!--    Cart-->
+    <string name="cart_name">Giỏ hàng</string>
+    <string name="cart_food_add">Đồ ăn thêm :</string>
+    <string name="cart_price">Giá :</string>
+    <string name="cart_total">Tổng tiền</string>
+    <string name="cart_price_ship">Vận chuyển</string>
+    <string name="cart_voucher">Phiếu giảm giá</string>
+    <string name="cart_subtotal">Thành tiền</string>
+    <string name="cart_confirm">Xác nhận</string>
+
+    <!--    Payment-->
+    <string name="payment_edit">Chỉnh sửa</string>
+    <string name="payment_name">Họ tên</string>
+    <string name="payment_address">Địa chỉ</string>
+    <string name="payment_phone">Số điện thoại</string>
+    <string name="payment_total">Thành tiền</string>
+    <string name="payment_note">Lưu ý: Thanh toán khi nhận hàng</string>
+    <string name="payment_accept">Xác nhận</string>
+
+    <!--    Confirm Order-->
+    <string name="confirm_order">Xác nhận đơn hàng thành công!</string>
 
 
 </resources>
