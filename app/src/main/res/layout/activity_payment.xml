@@ -184,16 +184,16 @@
             android:paddingLeft="10dp"
             android:text="@string/payment_total" />
 
-        <EditText
+        <TextView
             android:id="@+id/edit_total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:ems="5"
-            android:inputType="none"
             android:text="100.000 đ"
             android:textColor="#E85353"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <ImageView
