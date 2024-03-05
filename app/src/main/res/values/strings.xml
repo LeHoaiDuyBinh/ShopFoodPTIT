@@ -76,5 +76,17 @@
     <!--    Confirm Order-->
     <string name="confirm_order">Xác nhận đơn hàng thành công!</string>
 
+    <string name="firebase_database_url" translatable="false">https://123.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">123</string>
+    <string name="google_api_key" translatable="false">123</string>
+    <string name="google_app_id" translatable="false">123</string>
+    <string name="default_web_client_id">365469232378-ekhevphfje3je5pil41kbmfqjpujc2cm.apps.googleusercontent.com</string>
+
+
+    <string name="facebook_app_id">424489293429836</string>
+    <string name="fb_login_protocol_scheme">8697d2a4777d54029fac07dfb9dbb4fb</string>
+    <string name="facebook_client_token">z4uTEDIM/w0FqRLB34QZCz3GY/0=</string>
+
+
 
 </resources>
