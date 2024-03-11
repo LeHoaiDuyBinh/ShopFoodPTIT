@@ -30,6 +30,8 @@
     <string name="enter_email">Nhập email</string>
     <string name="forgot_pass">Quên mật khẩu</string>
     <string name="send_code">Gửi mã xác nhận</string>
+    <string name="reset_password">Vui lòng check mail để tiến hành reset password nhầm tăng cường tính bảo mật của tài khoản</string>
+    <string name="reset_password_completed">Hoàn thành</string>
 
     <!--    Confrim OTP-->
     <string name="confirm_otp">Xác thực OTP</string>

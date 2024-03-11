@@ -14,6 +14,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.database
+import android.util.Base64
+import android.util.Log
+import java.security.MessageDigest
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -75,7 +78,16 @@ class SignUpActivity : AppCompatActivity() {
         password = edtPassword.text.toString().trim()
         val user = UserModel(userName, email, password)
         // Lưu thông tin khách hàng vào database của Firebase realtime
-        val userId = FirebaseAuth.getInstance().currentUser!!.uid
-        database.child("User").child(userId).setValue(user)
+//        val userId = FirebaseAuth.getInstance().currentUser!!.uid
+        val encodedEmail = sha1(email)
+        Log.d("dumamay", encodedEmail)
+
+        database.child("User").child(encodedEmail).setValue(user)
     }
+
+    fun sha1(input: String): String {
+        val bytes = MessageDigest.getInstance("SHA-1").digest(input.toByteArray())
+        return bytes.joinToString("") { "%02x".format(it) }
+    }
+
 }
