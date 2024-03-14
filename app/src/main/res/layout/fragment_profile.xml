@@ -1,14 +1,254 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Fragment.ProfileFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="56dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/custom_profile"
+        android:elevation="2dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/aclonica"
+            android:text="@string/profile_name"
+            android:textColor="@color/black"
+            android:textSize="18sp">
+        </TextView>
+        
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:ems="6"
+            android:layout_marginTop="2dp"
+            android:gravity="center_vertical"
+            android:textSize="18sp"
+            android:fontFamily="@font/alice"
+            android:inputType="textMultiLine"
+            android:text="Lê Hoài Duy Bình">
+        </EditText>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/baseline_edit_calendar_24">
+        </ImageView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/custom_profile"
+        android:elevation="2dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/aclonica"
+            android:text="@string/profile_address"
+            android:textColor="@color/black"
+            android:textSize="18sp">
+        </TextView>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:ems="6"
+            android:layout_marginTop="2dp"
+            android:gravity="center_vertical"
+            android:textSize="18sp"
+            android:fontFamily="@font/alice"
+            android:inputType="textMultiLine"
+            android:text="87/2/5, ấp 7, xã XTT, huyện HM">
+        </EditText>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/baseline_edit_calendar_24">
+        </ImageView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/custom_profile"
+        android:elevation="2dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/aclonica"
+            android:text="@string/profile_email"
+            android:textColor="@color/black"
+            android:textSize="18sp">
+        </TextView>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:fontFamily="@font/alice"
+            android:gravity="center_vertical"
+            android:inputType="textMultiLine"
+            android:text="lehoaiduybinh.pch.2b7.97@gmail.com"
+            android:textSize="18sp"></EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/custom_profile"
+        android:elevation="2dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/aclonica"
+            android:text="@string/profile_phone_number"
+            android:textColor="@color/black"
+            android:textSize="18sp">
+        </TextView>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:ems="9"
+            android:fontFamily="@font/alice"
+            android:gravity="center_vertical"
+            android:inputType="textMultiLine"
+            android:text="0707427559"
+            android:textSize="20sp"></EditText>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/custom_profile"
+        android:elevation="2dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/aclonica"
+            android:text="@string/profile_password"
+            android:textColor="@color/black"
+            android:textSize="18sp">
+        </TextView>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:ems="5"
+            android:layout_marginTop="2dp"
+            android:gravity="center_vertical"
+            android:textSize="20sp"
+            android:fontFamily="@font/alice"
+            android:inputType="textPassword"
+            android:text="Lê Hoài Duy Bình">
+        </EditText>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:src="@drawable/baseline_edit_calendar_24">
+        </ImageView>
+    </LinearLayout>
+    
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_save_infor_customer"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/custom_profile"
+        android:elevation="5dp"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textColor="#DC1414"
+        android:textSize="20dp"
+        android:paddingTop="5dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center"
+        android:layout_marginTop="32dp"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:text="@string/profile_save_info_customer">
+    </androidx.appcompat.widget.AppCompatButton>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_logout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/custom_btn_return_home"
+        android:elevation="5dp"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:paddingTop="5dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center"
+        android:layout_marginTop="60dp"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:text="@string/profile_logout">
+    </androidx.appcompat.widget.AppCompatButton>
+
+</LinearLayout>
