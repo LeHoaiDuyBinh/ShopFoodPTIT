@@ -14,20 +14,20 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="center_vertical"
         android:text="PTIT FOOD"
         android:textColor="#CD2E2F"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/searchView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="@+id/ImgNotify"
         app:layout_constraintHorizontal_bias="0.53"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></TextView>
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/ImgNotify"
         android:layout_width="34dp"
         android:layout_height="34dp"
         android:layout_marginEnd="15dp"
@@ -37,21 +37,6 @@
         app:layout_constraintVertical_bias="0.541"
         app:srcCompat="@drawable/baseline_notifications_active_24" />
 
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:background="@drawable/custom_view_search_bar"
-        android:iconifiedByDefault="false"
-        android:queryBackground="@android:color/transparent"
-        android:queryHint="@string/search_hint"
-        app:layout_constraintBottom_toTopOf="@+id/fcv_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_webcome_user" />
 
     <fragment
         android:id="@+id/fcv_view"
@@ -64,7 +49,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bnv_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView"
+        app:layout_constraintTop_toBottomOf="@+id/ImgNotify"
         app:navGraph="@navigation/navigation" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
