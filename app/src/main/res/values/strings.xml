@@ -55,6 +55,15 @@
 
     <!--    Search-->
     <string name="search_hint">Món ăn yêu thích ?</string>
+    <string name="search_fast_food">Thức ăn nhanh</string>
+
+    <!--    Food detail-->
+    <string name="food_detail_name">Food Name</string>
+    <string name="food_detail">Mô tả</string>
+    <string name="food_decription">Hamburger là một loại thức ăn bao gồm bánh mì kẹp thịt xay ở giữa. Miếng thịt có thể được nướng, chiên, hun khói hay nướng trên lửa.</string>
+    <string name="food_topping">Ăn thêm</string>
+    <string name="food_note">Ghi chú</string>
+    <string name="food_btn_add_cart">Thêm vào giỏ hàng</string>
 
     <!--    Cart-->
     <string name="cart_name">Giỏ hàng</string>

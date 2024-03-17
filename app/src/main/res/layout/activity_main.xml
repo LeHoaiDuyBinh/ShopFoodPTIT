@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
 
@@ -13,43 +14,44 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginTop="40dp"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="center_vertical"
         android:text="PTIT FOOD"
         android:textColor="#CD2E2F"
-        android:textSize="34sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/ImgNotify"
-        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintHorizontal_bias="0.535"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></TextView>
+
 
     <ImageView
         android:id="@+id/ImgNotify"
         android:layout_width="34dp"
         android:layout_height="34dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_webcome_user"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_webcome_user"
-        app:layout_constraintVertical_bias="0.541"
+        app:layout_constraintVertical_bias="0.333"
         app:srcCompat="@drawable/baseline_notifications_active_24" />
-
 
     <fragment
         android:id="@+id/fcv_view"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
-        android:layout_height="560dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_height="602dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@+id/bnv_menu"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ImgNotify"
+        app:layout_constraintTop_toBottomOf="@+id/tv_webcome_user"
         app:navGraph="@navigation/navigation" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -59,6 +61,7 @@
         android:background="#DF1131"
 
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu" />
 
