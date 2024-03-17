@@ -9,9 +9,9 @@ import com.example.shopfoodptit.databinding.ActivityFoodDetailBinding
 class FoodDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFoodDetailBinding
     private val toppngingName = listOf(
-        "Chả lụa", "Thịt bò", "Xúc xích", "Chả lụa", "Thịt bò", "Xúc xích")
+        "Chả lụa", "Thịt bò", "Xúc xích", "Chả lụa", "Thịt bò")
     private val toppingPrice = listOf(
-        "10.000 đ", "20.000 đ", "15.000 đ", "10.000 đ", "20.000 đ", "15.000 đ")
+        "10.000 đ", "20.000 đ", "15.000 đ", "10.000 đ", "20.000 đ")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFoodDetailBinding.inflate(layoutInflater)
