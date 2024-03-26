@@ -1,5 +1,6 @@
 package com.example.shopfoodptit.Fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,8 +12,14 @@ import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.shopfoodptit.R
-import com.example.shopfoodptit.adapter.PopularAdapter
+import com.example.shopfoodptit.adapter.MenuAdapter
 import com.example.shopfoodptit.databinding.FragmentHomeBinding
+import com.example.shopfoodptit.model.MenuItem
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 /**
  * A simple [Fragment] subclass.
@@ -21,6 +28,8 @@ import com.example.shopfoodptit.databinding.FragmentHomeBinding
  */
 class HomeFragment : Fragment() {
     private lateinit var bindind: FragmentHomeBinding
+    private lateinit var database:FirebaseDatabase
+    private lateinit var menuItems:MutableList<MenuItem>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -30,7 +39,55 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         bindind = FragmentHomeBinding.inflate(inflater, container, false)
+//        bindind.btnViewMenu.setOnClickListener{
+//            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+//            transaction.replace(R.id.home_fragment, SearchFragment())
+//            transaction.addToBackStack(null) // Thêm Fragment hiện tại vào back stack (nếu cần)
+//            transaction.commit()
+//        }
+
+        // retrieve and display popular menu items
+        retrieveAndDisplayPopularItems()
+
         return bindind.root
+    }
+
+    private fun retrieveAndDisplayPopularItems() {
+        //get reference to the database
+        database = FirebaseDatabase.getInstance()
+        val foodRel:DatabaseReference = database.reference.child("menu")
+        menuItems = mutableListOf()
+
+        //retrieve menu from the database
+        foodRel.addListenerForSingleValueEvent(object :ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for(foodSnapshot in snapshot.children) {
+                    val menuItem = foodSnapshot.getValue(MenuItem::class.java)
+                    menuItem?.let { menuItems.add(it) }
+                }
+                //display a random popular item
+                randomPopularItems()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
+    private fun randomPopularItems() {
+        //create at shuffled list of menu items
+        val index = menuItems.indices.toList().shuffled()
+        val numItemToShow = 6
+        val subsetMenuItems = index.take(numItemToShow).map { menuItems[it] }
+        setpopularItemAdapter(subsetMenuItems)
+    }
+
+    private fun setpopularItemAdapter(subsetMenuItems: List<MenuItem>) {
+        val adapter = MenuAdapter(subsetMenuItems, requireContext())
+        bindind.popularRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        bindind.popularRecyclerView.adapter = adapter
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,15 +113,5 @@ class HomeFragment : Fragment() {
 
             }
         })
-
-        val foodName = listOf("Hamburger", "Pizza", "Gà KFC")
-        val foodPrice = listOf("20.000 đ", "70.000 đ", "65.000 đ")
-        val populerFoodImages = listOf(R.drawable.pic_food_hamburger, R.drawable.pic_food_pizza, R.drawable.pic_food_kfc)
-        val adapter = PopularAdapter(foodName, foodPrice, populerFoodImages, requireContext())
-        bindind.popularRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        bindind.popularRecyclerView.adapter = adapter
-    }
-
-    companion object {
     }
 }
