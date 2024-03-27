@@ -11,6 +11,7 @@ import com.example.shopfoodptit.databinding.ActivityFoodDetailBinding
 import com.example.shopfoodptit.model.CartItem
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import java.security.MessageDigest
 
 class FoodDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFoodDetailBinding
@@ -20,6 +21,7 @@ class FoodDetailActivity : AppCompatActivity() {
     private var foodPrice:String ?= null
     private var foodIngred:String ?= null
     private var foodImage:String ?= null
+    private var foodNote:String ?= null
     private val toppingName = listOf(
         "Chả lụa", "Thịt bò", "Xúc xích", "Chả lụa", "Thịt bò")
     private val toppingPrice = listOf(
@@ -37,6 +39,7 @@ class FoodDetailActivity : AppCompatActivity() {
         foodPrice = intent.getStringExtra("menuItemPrice")
         foodIngred = intent.getStringExtra("menuItemIngredients")
         foodImage = intent.getStringExtra("menuItemImage")
+
 
         val adapter = ToppingAdapter(toppingName as MutableList<String>, toppingPrice as MutableList<String>)
         binding.detailRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -59,16 +62,23 @@ class FoodDetailActivity : AppCompatActivity() {
 
     private fun addItemToCart() {
         val database = FirebaseDatabase.getInstance().reference
-        val userID = auth.currentUser?.uid?:""
+        val userID = sha1(auth.currentUser?.email?:"")
+
+        foodNote = binding.foodNote.text.toString().trim()
 
         //create a cart items object
-        val cartItem = CartItem(foodName.toString(), foodPrice.toString(), foodDescript.toString(), foodImage.toString(), "topping", 1 )
+        val cartItem = CartItem(foodName.toString(), foodPrice.toString(), foodDescript.toString(), foodImage.toString(), "topping", 1, foodNote)
 
         //save data to cart to database
         database.child("User").child(userID).child("Cart").push().setValue(cartItem).addOnSuccessListener {
-            Toast.makeText(this, "Items added into cart successfully!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Items added into cart successfully!", Toast.LENGTH_LONG).show()
         }.addOnFailureListener{
-            Toast.makeText(this, "Items no added!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Items no added!", Toast.LENGTH_LONG).show()
         }
+    }
+
+    fun sha1(input: String): String {
+        val bytes = MessageDigest.getInstance("SHA-1").digest(input.toByteArray())
+        return bytes.joinToString("") { "%02x".format(it) }
     }
 }

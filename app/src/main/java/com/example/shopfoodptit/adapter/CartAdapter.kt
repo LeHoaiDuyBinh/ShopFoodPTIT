@@ -21,6 +21,7 @@ import com.bumptech.glide.request.target.Target
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import java.security.MessageDigest
 
 class CartAdapter(
         private val context: Context,
@@ -35,12 +36,24 @@ class CartAdapter(
     private val auth = FirebaseAuth.getInstance()
     init {
         val database = FirebaseDatabase.getInstance()
-        val userId = auth.currentUser?.uid?:""
+        val userID = sha1(auth.currentUser?.email?:"")
         val cartItemNumber = cartItems.size
         itemQuantities = IntArray(cartItemNumber){1}
-        cartItemsReference = database.reference.child("User").child(userId).child("Cart")
+        cartItemsReference = database.reference.child("User").child(userID).child("Cart")
     }
+
+    fun sha1(input: String): String {
+        val bytes = MessageDigest.getInstance("SHA-1").digest(input.toByteArray())
+        return bytes.joinToString("") { "%02x".format(it) }
+    }
+
     companion object {
+        fun getUpdatedItemsQuantities(): MutableList<Int> {
+            val itemQuantities = mutableListOf<Int>()
+            itemQuantities.addAll(cartQuantities)
+            return itemQuantities
+        }
+        private var cartQuantities:MutableList<Int> = mutableListOf()
         private var itemQuantities:IntArray = intArrayOf()
         private lateinit var cartItemsReference: DatabaseReference
     }
@@ -53,9 +66,14 @@ class CartAdapter(
         holder.bind(position)
     }
 
-    override fun getItemCount(): Int {
-        return cartItems.size
-    }
+    override fun getItemCount(): Int = cartItems.size
+
+    //get updated quantities
+//    fun getUpdatedItemsQuantities(): MutableList<Int> {
+//        val itemQuantities = mutableListOf<Int>()
+//        itemQuantities.addAll(cartQuantities)
+//        return itemQuantities
+//    }
 
     inner class CartViewHolder(private val binding: CartItemBinding) : RecyclerView.ViewHolder(binding.root) {
         private fun deceaseQuantity (position: Int) {
@@ -133,6 +151,7 @@ class CartAdapter(
                 val uri = Uri.parse(uriString)
                 Glide.with(context).load(uri).into(foodImageCart)
                 cartQuantity.text = quantity.toString()
+
                 btnCartDec.setOnClickListener {
                     deceaseQuantity(position)
                 }

@@ -26,21 +26,21 @@
             android:textColor="@color/black"
             android:textSize="18sp">
         </TextView>
-        
+
         <EditText
+            android:id="@+id/profile_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:ems="6"
-            android:layout_marginTop="2dp"
-            android:gravity="center_vertical"
-            android:textSize="14sp"
-            android:textColor="#6C6868"
             android:fontFamily="@font/poppins_semibold"
+            android:gravity="center_vertical"
             android:inputType="textMultiLine"
-            android:text="Lê Hoài Duy Bình">
-        </EditText>
+            android:text="Lê Hoài Duy Bình"
+            android:textColor="#6C6868"
+            android:textSize="14sp"></EditText>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -73,19 +73,19 @@
         </TextView>
 
         <EditText
+            android:id="@+id/profile_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:ems="6"
-            android:layout_marginTop="2dp"
-            android:gravity="center_vertical"
-            android:textSize="14sp"
-            android:textColor="#6C6868"
             android:fontFamily="@font/poppins_semibold"
+            android:gravity="center_vertical"
             android:inputType="textMultiLine"
-            android:text="87/2/5, ấp 7, xã XTT, huyện HM">
-        </EditText>
+            android:text="87/2/5, ấp 7, xã XTT, huyện HM"
+            android:textColor="#6C6868"
+            android:textSize="14sp"></EditText>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -118,6 +118,7 @@
         </TextView>
 
         <EditText
+            android:id="@+id/profile_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
@@ -127,8 +128,8 @@
             android:fontFamily="@font/poppins_semibold"
             android:gravity="center_vertical"
             android:inputType="textMultiLine"
-            android:textColor="#6C6868"
             android:text="lehoaiduybinh.pch.2b7.97@gmail.com"
+            android:textColor="#6C6868"
             android:textSize="14sp"></EditText>
 
     </LinearLayout>
@@ -156,6 +157,7 @@
         </TextView>
 
         <EditText
+            android:id="@+id/profile_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
@@ -193,18 +195,18 @@
         </TextView>
 
         <EditText
+            android:id="@+id/profile_pass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:ems="5"
-            android:layout_marginTop="2dp"
-            android:gravity="center_vertical"
-            android:textSize="20sp"
             android:fontFamily="@font/alice"
+            android:gravity="center_vertical"
             android:inputType="textPassword"
-            android:text="Lê Hoài Duy Bình">
-        </EditText>
+            android:text="Lê Hoài Duy Bình"
+            android:textSize="20sp"></EditText>
 
         <ImageView
             android:layout_width="wrap_content"

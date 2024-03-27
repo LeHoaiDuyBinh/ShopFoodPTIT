@@ -22,30 +22,13 @@ import com.google.firebase.database.ValueEventListener
 class SearchFragment : Fragment() {
     private lateinit var binding:FragmentSearchBinding
     private lateinit var database:FirebaseDatabase
-    private lateinit var menuItems:MutableList<MenuItem>
-
-//    private val originalMenuFoodName = listOf(
-//        "Hamburger", "Pizza", "Gà KFC", "Hamburger", "Pizza", "Gà KFC",
-//        "Hamburger", "Pizza", "Gà KFC", "Hamburger", "Pizza", "Gà KFC"
-//    )
-//    private val originalMenuFoodPrice = listOf(
-//        "20.000 đ", "70.000 đ", "65.000 đ", "20.000 đ", "70.000 đ", "65.000 đ",
-//        "20.000 đ", "70.000 đ", "65.000 đ", "20.000 đ", "70.000 đ", "65.000 đ"
-//    )
-//    private val originalMenuFoodImage = listOf(
-//        R.drawable.pic_food_hamburger, R.drawable.pic_food_pizza, R.drawable.pic_food_kfc,
-//        R.drawable.pic_food_hamburger, R.drawable.pic_food_pizza, R.drawable.pic_food_kfc,
-//        R.drawable.pic_food_hamburger, R.drawable.pic_food_pizza, R.drawable.pic_food_kfc,
-//        R.drawable.pic_food_hamburger, R.drawable.pic_food_pizza, R.drawable.pic_food_kfc
-//    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
-    private val filterMenuFoodName = mutableListOf<String>()
-    private val filterMenuFoodPrice = mutableListOf<String>()
-    private val filterMenuFoodImage = mutableListOf<String>()
+    private val menuItems = mutableListOf<MenuItem>()
+    private val filterMenuItems = mutableListOf<MenuItem>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,20 +40,18 @@ class SearchFragment : Fragment() {
         setupSearchView()
 
         showAllMenu()
-//        Toast.makeText(context, "Connect to database success!", Toast.LENGTH_SHORT).show();
+
         return binding.root
     }
 
     private fun retrieveMenuItems() {
         database = FirebaseDatabase.getInstance()
         val foodRef:DatabaseReference = database.reference.child("menu")
-        menuItems = mutableListOf()
         foodRef.addListenerForSingleValueEvent(object :ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (foodSnapshot in snapshot.children) {
                     val menuItem = foodSnapshot.getValue(MenuItem::class.java)
                     menuItem?.let {menuItems.add(it)}
-                    Toast.makeText(context, menuItem?.foodName, Toast.LENGTH_SHORT).show()
                 }
                 Log.d("ITEMS", "onDataChange: Data received")
                 // once data receive, add to adapter
@@ -96,15 +77,11 @@ class SearchFragment : Fragment() {
     }
 
     private fun showAllMenu() {
-        filterMenuFoodName.clear()
-        filterMenuFoodPrice.clear()
-        filterMenuFoodImage.clear()
+        filterMenuItems.clear()
 
         val adapter = MenuAdapter(menuItems, requireContext())
         for (menuItem in menuItems) {
-            menuItem.foodName?.let { filterMenuFoodName.add(it) }
-            menuItem.foodPrice?.let { filterMenuFoodPrice.add(it) }
-            menuItem.foodImage?.let { filterMenuFoodImage.add(it) }
+            menuItem?.let { filterMenuItems.add(it) }
         }
 
         adapter.notifyDataSetChanged()
@@ -125,20 +102,19 @@ class SearchFragment : Fragment() {
     }
 
     private fun filterMenuItem(query: String) {
-        filterMenuFoodName.clear()
-        filterMenuFoodPrice.clear()
-        filterMenuFoodImage.clear()
+        filterMenuItems.clear()
 
-        val adapter = MenuAdapter(menuItems, requireContext())
+//        val adapter = MenuAdapter(menuItems, requireContext())
         menuItems.forEach { menuItem ->
             menuItem.foodName?.let { foodName ->
                 if (foodName.contains(query, ignoreCase = true)) {
-                    filterMenuFoodName.add(foodName)
-                    menuItem.foodPrice?.let { filterMenuFoodPrice.add(it) }
-                    menuItem.foodImage?.let { filterMenuFoodImage.add(it) }
+                    menuItem?.let { filterMenuItems.add(it) }
                 }
             }
         }
+        val adapter = MenuAdapter(filterMenuItems, requireContext())
+        binding.menuRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.menuRecyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
     }
 }
