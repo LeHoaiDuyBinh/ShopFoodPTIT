@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.telecom.Call
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -69,11 +70,17 @@ class LoginUserActivity : AppCompatActivity() {
         btnLogin.setOnClickListener{
             email = edtEmail.text.toString().trim()
             password = edtPassword.text.toString().trim()
+            var s : String = "@ptitfoodadmin.edu.vn"
+            var tvCheck : TextView = findViewById(R.id.tv_username_error)
 
             if (email.isBlank() || password.isBlank()) {
                 Toast.makeText(this, "Vui lòng nhập đủ thông tin", Toast.LENGTH_SHORT).show()
             } else {
-                signInUser(email, password)
+                if (!email.endsWith(s.toString())) {
+                    signInUser(email, password)
+                } else {
+                    tvCheck.visibility = View.VISIBLE
+                }
             }
         }
 

@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.database
 import android.util.Base64
 import android.util.Log
+import android.view.View
 import java.security.MessageDigest
 
 class SignUpActivity : AppCompatActivity() {
@@ -43,11 +44,24 @@ class SignUpActivity : AppCompatActivity() {
             email = edtEmail.text.toString().trim()
             userName = edtName.text.toString().trim()
             password = edtPassword.text.toString().trim()
+            var s : String = "@ptitfoodadmin.edu.vn"
+            var tvCheck : TextView = findViewById(R.id.tv_username_error_signUp)
+            var tvCheckPass : TextView = findViewById(R.id.tv_password_error_signUp)
 
             if (email.isBlank() || userName.isBlank() || password.isBlank()){
                 Toast.makeText(this, "Vui lòng không để trống thông tin", Toast.LENGTH_SHORT).show()
             }else{
-                registerUser(email, password)
+                if (!email.endsWith(s)){
+                    tvCheck.visibility = View.GONE
+                    if (password.length > 5) {
+                        tvCheckPass.visibility = View.GONE
+                        registerUser(email, password)
+                    }else{
+                        tvCheckPass.visibility = View.VISIBLE
+                    }
+                }else{
+                    tvCheck.visibility = View.VISIBLE
+                }
             }
         }
     }
